@@ -2,14 +2,46 @@ import { faClock, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 
 const BookingInfo = () => {
+    const  history = useHistory()
     const { user } = useAuth();
+    console.log(user)
     const [tour, setTour] = useState({})
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset , formState: { errors } } = useForm();
+    const onSubmit = data => {
+        const newBooking = {
+            ...data,
+            img:user.photoURL,
+            status:'pending',
+            tour:tour
+        }
+        fetch('http://localhost:5000/postBooking' , {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(newBooking)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                Swal.fire({
+                    icon:'success',
+                    title:'Tour Booked successfully',
+                    text:"To conferm your tour , approve the status"
+                })
+                reset()
+                history.push('/')
+            }
+            console.log(data)
+        })
+
+        console.log(newBooking)
+    };
 
     const { id } = useParams()
     useEffect(() => {
@@ -48,7 +80,7 @@ const BookingInfo = () => {
                         <input defaultValue={user.displayName} {...register("name" , { required: true })} type="text" className="input" placeholder="User Name"/>
                         {errors.email && <span className="text-red-600">Name Is Required</span>}
 
-                        <textarea {...register("adress" , { required: true })} type="text" className="input" placeholder="Your Address" cols="30" rows="5"></textarea>
+                        <textarea {...register("address" , { required: true })} type="text" className="input" placeholder="Your Address" cols="30" rows="5"></textarea>
                         {errors.adress && <span className="text-red-600">Address Is Required</span>}
                         
                         <input  {...register("date" , { required: true })} type="date" className="input" placeholder="User Name"/>
@@ -59,7 +91,9 @@ const BookingInfo = () => {
 
                         <input defaultValue={tour.destination} readOnly type="text" className="input" />
                         
-                        <input type="submit" />
+                        <div className="text-center">
+                        <input type="submit" value="Booking" className="btn-1 cursor-pointer"/>
+                        </div>
                     </form>
                 </div>
             </div>
