@@ -7,7 +7,7 @@ const AllTours = () => {
     const [isLoading,setIsLoading] = useState(true)
     
     useEffect(() => {
-        fetch('http://localhost:5000/tours')
+        fetch('https://whispering-chamber-87244.herokuapp.com/tours')
         .then(res => res.json())
         .then(data => {
             console.log(data)

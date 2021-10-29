@@ -7,7 +7,7 @@ const MyBookings = () => {
     const {user} = useAuth()
     const [bookings , setBookings] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myBookings/${user.email}`)
+        fetch(`https://whispering-chamber-87244.herokuapp.com/myBookings/${user.email}`)
         .then(res => res.json())
         .then(data => setBookings(data))
     } , [user])
@@ -19,7 +19,7 @@ const MyBookings = () => {
             confirmButtonText: 'Yes',
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/deleteBooking/${id}` , {
+                fetch(`https://whispering-chamber-87244.herokuapp.com/deleteBooking/${id}` , {
                     method:"DELETE"
                 }).then(res => res.json())
                 .then(data => {

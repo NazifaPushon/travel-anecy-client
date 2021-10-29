@@ -19,7 +19,7 @@ const BookingInfo = () => {
             status:'pending',
             tour:tour
         }
-        fetch('http://localhost:5000/postBooking' , {
+        fetch('https://whispering-chamber-87244.herokuapp.com/postBooking' , {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const BookingInfo = () => {
 
     const { id } = useParams()
     useEffect(() => {
-        fetch(`http://localhost:5000/singleTour/${id}`)
+        fetch(`https://whispering-chamber-87244.herokuapp.com/singleTour/${id}`)
             .then(res => res.json())
             .then(data => setTour(data))
     }, [id])

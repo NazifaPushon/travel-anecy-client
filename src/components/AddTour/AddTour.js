@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const AddTour = () => {
     const { register, handleSubmit, reset , formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/tourPost' , {
+        fetch('https://whispering-chamber-87244.herokuapp.com/tourPost' , {
             method:"POST",
             headers: {
                 'content-type':'application/json'

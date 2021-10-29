@@ -4,7 +4,7 @@ const ManageBookings = () => {
     const [bookings , setBookings] = useState([])
     const [isUpdated , setIsUpdated] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://whispering-chamber-87244.herokuapp.com/bookings')
         .then(res => res.json())
         .then(data => {
             setIsUpdated(false)
@@ -19,7 +19,7 @@ const ManageBookings = () => {
             status : 'approved'
         }
         console.log(updatedBooking)
-        fetch(`http://localhost:5000/updateStatusBooking/${id}` , {
+        fetch(`https://whispering-chamber-87244.herokuapp.com/updateStatusBooking/${id}` , {
             method : "PUT",
             headers:{
                 'Content-Type':'application/json'
