@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import AddTour from './components/AddTour/AddTour';
 import BookingInfo from './components/BookingInfo/BookingInfo';
+import Footer from './components/Footer/Footer';
 import GoogleSignIn from './components/GoogleSignIn/GoogleSignIn';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -14,9 +15,9 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter >
         <Header/>
-          <Switch>
+          <Switch className="flex-grow">
             <Route exact path="/">
               <Home/>
             </Route>
@@ -36,6 +37,7 @@ function App() {
                 <BookingInfo/>
             </PrivateRoute>
           </Switch>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>

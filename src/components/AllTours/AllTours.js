@@ -1,29 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { ClipLoader } from 'react-spinners';
+import React from 'react';
 import SignleTour from '../SingleTour/SignleTour';
 
-const AllTours = () => {
-    const [tours, setTours] = useState([])
-    const [isLoading,setIsLoading] = useState(true)
+const AllTours = ({tours}) => {
     
-    useEffect(() => {
-        fetch('https://whispering-chamber-87244.herokuapp.com/tours')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setTours(data)
-            setIsLoading(false)
-        })
-    } , [])
-    if(isLoading){
-        return (<div className="w-full  flex justify-center items-center">
-         <ClipLoader color="#000000"  size={60} />
-     </div>
-            
-        )
-    }
     return (
-        <div className="container">
+        <div className="container my-20" id="tours">
             <h1>All Toures</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-20">
             {

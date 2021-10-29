@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-        'title':['Playfair Display' , 'serif']
+        'title':['Raleway' , 'serif']
       },
       colors:{
         'tomato':'#ff7c5b',

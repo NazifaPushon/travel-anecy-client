@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import UserBooking from '../UserBooking/UserBooking';
 
 const ManageBookings = () => {
     const [bookings , setBookings] = useState([])
@@ -9,6 +11,7 @@ const ManageBookings = () => {
         .then(data => {
             setIsUpdated(false)
             setBookings(data)
+            console.log(data)
         })
     } , [isUpdated])
 
@@ -31,38 +34,32 @@ const ManageBookings = () => {
             setIsUpdated(true)
         })
     }
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            icon:'warning',
+            title: 'Do you want to delete the booking',
+            confirmButtonText: 'Yes',
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://whispering-chamber-87244.herokuapp.com/deleteBooking/${id}` , {
+                    method:"DELETE"
+                }).then(res => res.json())
+                .then(data => {
+                    Swal.fire('Your booking is deleted', '', 'success')
+                    const newMybooking = bookings.filter(booking => booking._id !== id)
+                    setBookings(newMybooking)
+                })
+              
+            } 
+          })
+    }
     return (
         <div className="container ">
             <h1 className="">Manage All Bookings </h1>
-            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
             {
-                bookings.map(booking => <div className="card text-md " key={booking._id}>
-                    <div className="flex justify-between  items-center  p-5">
-                        <div>
-                            <img src={booking.img} alt="" className="w-16 h-16 rounded-full "/>
-                        </div>
-                        <div>
-                            <p>{booking.name}</p>
-                            <p>{booking.email}</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="p-5">
-                        <p className="text-2xl font-semibold  "> {booking.tour.destination}</p>
-                        <p className="my-3">Date : {booking.date}</p>
-                        <p className="my-3">Status : <span className={booking.status === 'pending' ? 'px-3 py-2 rounded-full bg-tomato text-white' : 'p-2  rounded-full bg-green-200 text-green-600'}>
-                        {booking.status}
-                            </span></p>
-                    </div>
-                    <div className=" grid grid-cols-2 text-center ">
-                        <div className="bg-dark-blue text-white  py-3" >
-                            <button  className="w-full" onClick={() => handleUpdateStatus(booking._id , booking)}>Update Satus</button>
-                        </div>
-                        <div className="bg-tomato text-white py-3">
-                           <button className="w-full"> Delete</button>
-                        </div>
-                    </div>
-                </div>)
+                bookings.map(booking => <UserBooking booking={booking} key={booking._id} handleDelete={handleDelete} handleUpdateStatus={handleUpdateStatus}/>)
             }
             </div>
         </div>
