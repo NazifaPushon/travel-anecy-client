@@ -1,0 +1,9 @@
+/* css for not found componet */
+.bg {
+  background: linear-gradient(#0000007d, #0003),
+    url("https://i.ibb.co/LkTd3wP/photo-1445999794508-1e24b2f535ab-ixlib-rb-1-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}

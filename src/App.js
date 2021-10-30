@@ -8,9 +8,9 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import ManageBookings from './components/ManageBookings/ManageBookings';
 import MyBookings from './components/MyBookings/MyBookings';
+import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AuthProvider from './Context/AuthProvider';
-
 //main entry point of the app
 // all routing is set up here
 function App() {
@@ -38,6 +38,9 @@ function App() {
             <PrivateRoute  path="/booking/:id">
                 <BookingInfo/>
             </PrivateRoute>
+            <Route>
+              <NotFound/>
+            </Route>
           </Switch>
           <Footer />
         </BrowserRouter>
