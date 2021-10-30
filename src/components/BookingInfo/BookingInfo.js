@@ -5,13 +5,16 @@ import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import BackBtn from '../BackBtn/BackBtn';
 
+// this component collect data from user and save to mongodb
+// when collecting data status named property is added  
 const BookingInfo = () => {
     const  history = useHistory()
     const { user } = useAuth();
-    console.log(user)
     const [tour, setTour] = useState({})
     const { register, handleSubmit, reset , formState: { errors } } = useForm();
+    //submit functionality for form
     const onSubmit = data => {
         const newBooking = {
             ...data,
@@ -53,6 +56,7 @@ const BookingInfo = () => {
 
         <div className="container my-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* contect of the tour */}
                 <div>
                     <div>
                         <img alt="" className="w-full h-80" src={tour.img} />
@@ -72,6 +76,8 @@ const BookingInfo = () => {
                         <p className="text-gray-600"><span className="font-semibold">Description</span> : {tour.description}</p>
                     </div>
                 </div>
+
+                {/* form starts here */}
                 <div className="p-5 border border-gray-300 rounded-lg">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input defaultValue={user.email} {...register("email" , { required: true })} type="email" className="input" placeholder="email"/>
@@ -92,11 +98,13 @@ const BookingInfo = () => {
                         <input defaultValue={tour.destination} readOnly type="text" className="input" />
                         
                         <div className="text-center">
-                        <input type="submit" value="Booking" className="btn-1 cursor-pointer"/>
+                        <input type="submit" value="Confirm Booking" className="btn-1 cursor-pointer"/>
                         </div>
                     </form>
                 </div>
+                {/* form ends here */}
             </div>
+            <BackBtn/>
         </div>
     );
 };

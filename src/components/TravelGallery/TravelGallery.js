@@ -1,8 +1,10 @@
 import React from 'react';
 
+// this is a gellary component 
+// this shows a number of  picture
 const TravelGallery = () => {
     return (
-        <div className="container my-20" id="gallery">
+        <section className="container my-20" id="gallery">
             <div className="my-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div>
@@ -45,7 +47,7 @@ const TravelGallery = () => {
                 </div>
             </div>
             </div>
-        </div>
+        </section>
     );
 };
 

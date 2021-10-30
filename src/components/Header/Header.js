@@ -2,14 +2,18 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+
+// this is header or nav component 
+// from here one user can log out
 const Header = () => {
     const history= useHistory()
     const { user ,logOut } = useAuth();
     return (
-        <div className="bg-dark-blue  text-white  text-center">
+        <nav className="bg-dark-blue  text-white  text-center">
             <div className="container grid grid-cols-1 lg:grid-cols-4 items-center">
-                <div className="text-4xl font-semibold text-tomato">HOLYDAY HYPE</div>
+                <div className="text-4xl font-semibold text-tomato">HOLIDAY HYPE</div>
                 <div className="col-span-3 block md:flex justify-end items-center ">
+                    {/* navigations */}
                     <div className="m-5">
                         <NavLink to="/">Home</NavLink>
                     </div>
@@ -44,7 +48,7 @@ const Header = () => {
                     }
                 </div>
             </div>
-        </div>
+        </nav>
     );
 };
 

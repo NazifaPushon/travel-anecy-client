@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import './Statistic.css';
-const Statistic = ({icon , title , text}) => {
+import './Speciality.css';
+// this is a simple component for about us
+// this componenet shows speciality for abour us
+const Speciality = ({icon , title , text}) => {
     return (
         <div className="grid grid-cols-4 text-white items-center gap-3 my-10  p-5 rounded-lg bg-color">
             <div className="text-5xl text-center">
@@ -15,4 +17,4 @@ const Statistic = ({icon , title , text}) => {
     );
 };
 
-export default Statistic;
+export default Speciality;

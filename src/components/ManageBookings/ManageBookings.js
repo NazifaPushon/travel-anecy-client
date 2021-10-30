@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import BackBtn from '../BackBtn/BackBtn';
 import UserBooking from '../UserBooking/UserBooking';
 
+// this is manage Tours component for manage tours page
+// give data to userbooking component
 const ManageBookings = () => {
     const [bookings , setBookings] = useState([])
     const [isUpdated , setIsUpdated] = useState(false)
+    // data loading
     useEffect(() => {
         fetch('https://whispering-chamber-87244.herokuapp.com/bookings')
         .then(res => res.json())
@@ -15,6 +19,7 @@ const ManageBookings = () => {
         })
     } , [isUpdated])
 
+    // functionality for  update status
     const handleUpdateStatus = (id , booking) => {
         console.log(id , booking)
         const updatedBooking = {
@@ -35,6 +40,7 @@ const ManageBookings = () => {
         })
     }
 
+    // Functionality for delete tour
     const handleDelete = (id) => {
         Swal.fire({
             icon:'warning',
@@ -62,6 +68,7 @@ const ManageBookings = () => {
                 bookings.map(booking => <UserBooking booking={booking} key={booking._id} handleDelete={handleDelete} handleUpdateStatus={handleUpdateStatus}/>)
             }
             </div>
+            <BackBtn/>
         </div>
     );
 };

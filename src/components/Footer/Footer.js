@@ -1,12 +1,14 @@
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
+
+// this is a simple foooter component 
 const Footer = () => {
     return (
-        <div className="bg-gray-700 text-white text-lg relative bottom-0">
+        <footer className="bg-gray-700 text-white text-lg relative bottom-0">
             <div className="container py-10 ">
                 <div className="grid grid-cols-1 md:grid-cols-4">
                     <div>
-                        <h2 className="text-3xl text-tomato font-semibold">HOLYDAY HYPE</h2>
+                        <h2 className="text-3xl text-tomato font-semibold">HOLIDAY HYPE</h2>
                     </div>
                     <div className="col-span-3 block md:flex justify-end items-center">
                         <div className="m-5">
@@ -23,9 +25,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <p className="text-center">&copy; All Rights Reserved by HOLYDAY HYPE</p>
+                <p className="text-center">&copy; All Rights Reserved by HOLIDAY HYPE</p>
             </div>
-        </div>
+        </footer>
     );
 };
 

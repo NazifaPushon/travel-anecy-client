@@ -7,6 +7,8 @@ import useAuth from '../../hooks/useAuth';
 // it redirects the user if he is not logged in
 const PrivateRoute = ({ children, ...rest }) => {
     const {user , isLoading} = useAuth()
+    
+    //spinner loading
     if(isLoading) {
         return (
             <div className="w-full h-screen flex justify-center items-center">

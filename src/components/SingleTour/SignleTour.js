@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory } from 'react-router';
 
+// this component renders single tour 
+// it takes data from alltour component and show on the UI
 const SignleTour = ({data}) => {
     const history = useHistory()
-    const {destination ,  price , location ,time ,img ,_id} = data
+    //data
+    const {destination ,  price , location ,time ,img ,_id ,description} = data
+    // functionality for clicking
     const handleClick = () => {
         history.push(`/booking/${_id}`)
     }
@@ -30,8 +34,8 @@ const SignleTour = ({data}) => {
                         {location}
                     </div>
                 </div>
-                
-                <div className="text-center"><button className="btn-1" onClick={handleClick}>Book</button></div>
+                <p className="text-gray-600">{description}</p>
+                <div className="text-center mt-5"><button className="btn-1" onClick={handleClick}>Book</button></div>
             </div>
         </div>
     );

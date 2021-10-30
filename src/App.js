@@ -11,11 +11,13 @@ import MyBookings from './components/MyBookings/MyBookings';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AuthProvider from './Context/AuthProvider';
 
+//main entry point of the app
+// all routing is set up here
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <BrowserRouter >
+        <BrowserRouter>
         <Header/>
           <Switch className="flex-grow">
             <Route exact path="/">
