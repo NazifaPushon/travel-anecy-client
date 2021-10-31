@@ -6,11 +6,11 @@ const UserBooking = ({booking , handleUpdateStatus , handleDelete}) => {
     const {_id , name , email , tour , date , status ,img} = booking
     return (
         <div className="card text-md " key={_id}>
-                    <div className="flex justify-between  items-center  p-5">
+                    <div className="md:flex block justify-between  items-center  p-5">
                         <div>
-                            <img src={img} alt="" className="w-16 h-16 rounded-full "/>
+                            <img src={img} alt="" className="w-16 h-16 rounded-full mx-auto"/>
                         </div>
-                        <div>
+                        <div className="text-center md:text-left">
                             <p>{name}</p>
                             <p>{email}</p>
                         </div>
