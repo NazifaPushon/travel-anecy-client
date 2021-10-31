@@ -27,7 +27,7 @@ const Header = () => {
                                 <NavLink to="/manageBookings">Manage All Bookings</NavLink>
                             </div>
                             <div className="m-5">
-                                <NavLink to="/addTour">Add Tour</NavLink>
+                                <NavLink to="/addTour">Add a Tour</NavLink>
                             </div>
                             <div className="m-5">
                                 {user.displayName}
